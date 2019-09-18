@@ -33,16 +33,12 @@ app.all('*',function (req, res, next) {
 //8引入cookie
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
-var multer = require('multer');
 //11  引入公共数据
 let config = require('./Utils/config');
 //引入index控制器
 let controller = require('./Controllers/IndexController.js');
 app.get('/index', controller.index);
-app.post('/pro6',controller.pro6)
-app.get('/pro',controller.pro)
-app.get('/pro2',controller.pro2)
-app.get('/pro3',controller.pro3)
+
 //登录页面
 let loginController = require('./Controllers/LoginController');
 app.get('/login', loginController.login);
@@ -50,7 +46,7 @@ app.post('/checkUser', loginController.checkUser);
 
 //注册页面
 let registerController = require('./Controllers/RegisterController');
-// app.get('/register', registerController.register);
+app.get('/registered', registerController.registered);
 app.post('/addUser', registerController.addUser);
 
 app.listen(config.port,function(){
