@@ -14,62 +14,25 @@ module.exports.index = function (req, res) {
     });
 
 }
-module.exports.pro = function (req, res) {
-    //创建对象 
-    let prod = new ProdService();
-    //获得新产品的数据
-    prod.getPro(function (ob) {
-        res.json(ob);
-    });
 
+module.exports.updateUser = function (req, res) {
+    let name = req.body.name;
+    let password = req.body.password;
+    let title = req.body.title;
+    let nickname = req.body.nickname;
+    let id = req.body.id
+    let prodService = new ProdService();
+    prodService.update(name, password, id,title,nickname, ob => {
+        res.json(ob)
+    })
 }
-module.exports.pro1 = function (req, res) {
-    //创建对象 
-    let prod = new ProdService();
-    //获得新产品的数据
-    prod.getPro1(function (ob) {
-        res.json(ob);
-    });
-
-}
-module.exports.pro2 = function (req, res) {
-    //创建对象 
-    let prod = new ProdService();
-    //获得新产品的数据
-    prod.getPro2(function (ob) {
-        res.json(ob);
-    });
-}
-module.exports.pro3 = function (req, res) {
-    //创建对象 
-    let prod = new ProdService();
-    //获得新产品的数据
-    prod.getPro3(function (ob) {
-        res.json(ob);
-    });
-}
-module.exports.pro4 = function (req, res) {
-    //创建对象 
-    let prod = new ProdService();
-    //获得新产品的数据
-    prod.getPro4(function (ob) {
-        res.json(ob);
-    });
-}
-module.exports.pro5 = function (req, res) {
-    //创建对象 
-    let prod = new ProdService();
-    //获得新产品的数据
-    prod.getPro5(function (ob) {
-        res.json(ob);
-    });
-}
-module.exports.pro6 = function (req, res) {
-    let typeid = req.body.typeid;
-    //创建对象 
-    let prod = new ProdService();
-    //获得新产品的数据
-    prod.getPro6(function (ob) {
-        res.json(ob);
-    });
+module.exports.shezUser = function (req, res) {
+    let name = req.body.name;
+    let title = req.body.title;
+    let nickname = req.body.nickname
+    let id = req.body.id
+    let prodService = new ProdService();
+    prodService.shez(name,id,title,nickname, ob => {
+        res.json(ob)
+    })
 }

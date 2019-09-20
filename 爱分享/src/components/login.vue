@@ -3,7 +3,7 @@
         <div class="login1">
             <a href="#">爱分享</a>
   <div class="inp">
-           <el-form ref="form" :model="form" label-width="80px">
+           <el-form ref="form" :model="form" label-width="100px">
   <el-form-item label="用户名">
     <el-input v-model="form.name" placeholder="输入手机号或者邮箱"></el-input>
   </el-form-item>
@@ -38,13 +38,16 @@
            if(that.form.name==''||that.form.pswd==''){
              alert('用户名或密码不能为空')
            }else{
-         that.axios.post('http://192.168.1.114:8888/checkUser',{name:that.form.name,pswd:that.form.pswd}).then(function(response){
+         that.axios.post(`${this.$store.state.ip}/checkUser`,{name:that.form.name,pswd:that.form.pswd}).then(function(response){
             window.console.log(response)
             if(response.data.code==1){
               alert('登录成功')
+              that.$store.commit("userInfo",response.data.user)
+              // window.console.log(that.$store.state)
+              // window.console.log(response.data.user[0].id)
+              that.$router.push('./shez')
             }else if(response.data.code==-1){
               alert('账号不存在')
-              // this.$router.push('./login')
             }else{
               alert('密码错误')
             }

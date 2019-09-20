@@ -29,8 +29,9 @@ export default {
     methods: {
        reg(){
            var that=this
-           that.axios.post('http://192.168.1.114:8888/addUser',{name:that.form.name,password:that.form.pswd}).then(function(response){
+           that.axios.post(`${this.$store.state.ip}/addUser`,{name:that.form.name,password:that.form.pswd}).then(function(response){
                window.console.log(response)
+               that.$router.push('./login')
            })
        } 
     },

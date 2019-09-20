@@ -38,6 +38,8 @@ let config = require('./Utils/config');
 //引入index控制器
 let controller = require('./Controllers/IndexController.js');
 app.get('/index', controller.index);
+app.post('/updateUser', controller.updateUser);
+app.post('/shezUser', controller.shezUser);
 
 //登录页面
 let loginController = require('./Controllers/LoginController');
@@ -49,6 +51,11 @@ let registerController = require('./Controllers/RegisterController');
 app.get('/registered', registerController.registered);
 app.post('/addUser', registerController.addUser);
 
+//上传图片
+// let fileController = require('./Controllers/FileController');
+// app.post("/uploadImgs", multer({
+//     dest: __dirname + '/public/upload/imgs/'
+// }).array('file'), fileController.upload);
 app.listen(config.port,function(){
     console.log('服务器已启动..')
 });

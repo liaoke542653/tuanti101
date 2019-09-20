@@ -5,7 +5,7 @@ class ProdModel extends SqlBase {
     }
     select(callback) {
         //编写sql语句
-        let sql = "select * from book1";
+        let sql = "SELECT * FROM imglist ORDER BY RAND() LIMIT 20 ";
 
         //查询数据
         this.connection.query(sql, function (err, result) {
@@ -17,104 +17,46 @@ class ProdModel extends SqlBase {
             callback(result);
         });
     }
-    sel(callback) {
+     //查询用户
+     selectByName(name, callback) {
         //编写sql语句
-        let sql = "select * from book1";
-
+        let sql = `select * from users where name="${name}"`;
         //查询数据
         this.connection.query(sql, function (err, result) {
             if (err) {
                 console.log(err.message);
                 return;
             }
-
             callback(result);
         });
     }
-    sele(callback) {
+    update(name,password,id,title,nickname,call) {
+        //4,编写sql语句
+        let sql = `UPDATE users SET name ='${name}',password = '${password}',title = '${title}',nickname = '${nickname}' WHERE id = '${id}'`;
+        //5，更新操作
+        this.connection.query(sql, function (err, result) {
+            if (err) {
+                console.log('[INSERT ERROR] - ', err.message);
+                return;
+            }
+            call(result);
+        });
+    }
+    //设置用户信息
+    shez(name,id,title,nickname,callback) {
         //编写sql语句
-        let sql = "select * from book2";
-
+        console.log('成了',title,nickname)
+        var sql=`update users SET title="${title}",nickname="${nickname}" WHERE id = '${id}' `
         //查询数据
         this.connection.query(sql, function (err, result) {
             if (err) {
                 console.log(err.message);
                 return;
             }
-
             callback(result);
         });
     }
-    selec(callback) {
-        //编写sql语句
-        let sql = "select * from book3";
-
-        //查询数据
-        this.connection.query(sql, function (err, result) {
-            if (err) {
-                console.log(err.message);
-                return;
-            }
-
-            callback(result);
-        });
-    }
-    selecc(callback) {
-        //编写sql语句
-        let sql = "select * from book4 where typeid";
-
-        //查询数据
-        this.connection.query(sql, function (err, result) {
-            if (err) {
-                console.log(err.message);
-                return;
-            }
-
-            callback(result);
-        });
-    }
-    seleccc(callback) {
-        //编写sql语句
-        let sql = "select * from xhwlist02";
-
-        //查询数据
-        this.connection.query(sql, function (err, result) {
-            if (err) {
-                console.log(err.message);
-                return;
-            }
-
-            callback(result);
-        });
-    }
-    selecccc(typeid,callback) {
-        //编写sql语句
-        let sql = `select * from book4 where  typeid=${typeid}`;
-
-        //查询数据
-        this.connection.query(sql, function (err, result) {
-            if (err) {
-                console.log(err.message);
-                return;
-            }
-
-            callback(result);
-        });
-    }
-    // selectById(id, callback) {
-    //     //编写sql语句
-    //     let sql = `select * from users where id=${id}`;
-
-    //     //查询数据
-    //     this.connection.query(sql, function (err, result) {
-    //         if (err) {
-    //             console.log(err.message);
-    //             return;
-    //         }
-
-    //         callback(result);
-    //     });
-    // }
+    
 }
 
 module.exports = ProdModel;

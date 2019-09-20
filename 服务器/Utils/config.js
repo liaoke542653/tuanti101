@@ -1,5 +1,5 @@
 let config = {
-    ip: "http://192.168.1.114:",
+    ip: "http://localhost:",
     port: 8888
 }
 
