@@ -17,6 +17,20 @@ class ProdModel extends SqlBase {
             callback(result);
         });
     }
+    select1(id,callback) {
+        //编写sql语句
+        var sql=`select * from imglist where sid = '${id}'`;
+
+        //查询数据
+        this.connection.query(sql, function (err, result) {
+            if (err) {
+                console.log(err.message);
+                return;
+            }
+
+            callback(result);
+        });
+    }
      //查询用户
      selectByName(name, callback) {
         //编写sql语句

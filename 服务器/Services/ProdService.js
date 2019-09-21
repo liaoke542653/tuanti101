@@ -6,6 +6,17 @@
          this.pro = new ProdModel();
          this.pro1 = new ProdModel();
      }
+     getImgs(callback) {
+        this.pro1.select(res=> {
+            callback(res);
+        })
+    }
+
+    getDetails(id,callback) {
+        this.pro1.select1(id,res=> {
+            callback(res);
+        })
+    }
 
 update(name,password,id,img,title,nickname,call) {
         this.pro1.update(name,password,id,img,title,nickname ,res=>{

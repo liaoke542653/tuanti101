@@ -45,7 +45,7 @@
               that.$store.commit("userInfo",response.data.user)
               // window.console.log(that.$store.state)
               // window.console.log(response.data.user[0].id)
-              that.$router.push('./shez')
+              that.$router.push('./home2')
             }else if(response.data.code==-1){
               alert('账号不存在')
             }else{

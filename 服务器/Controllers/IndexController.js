@@ -14,7 +14,23 @@ module.exports.index = function (req, res) {
     });
 
 }
+//获取页面图片信息
+module.exports.imgs = function (req, res) {
+    let prodService = new ProdService();
+    prodService.getImgs(ob => {
+        res.json(ob)
+    })
+}
+//获取详情
+module.exports.details = function (req, res) {
+    let id = req.body.id
+    let prodService = new ProdService();
+    prodService.getDetails(id,ob => {
+        res.json(ob)
+    })
+}
 
+//修改个人信息
 module.exports.updateUser = function (req, res) {
     let name = req.body.name;
     let password = req.body.password;
@@ -26,6 +42,7 @@ module.exports.updateUser = function (req, res) {
         res.json(ob)
     })
 }
+//设置个人信息
 module.exports.shezUser = function (req, res) {
     let name = req.body.name;
     let title = req.body.title;
